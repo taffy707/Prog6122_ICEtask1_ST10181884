@@ -1,0 +1,67 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    internal class FileName
+    {
+        public static string scriptsToMark(int numberOfScripts, int numberOflecturers)
+        {
+            int lecturerScript = numberOfScripts / numberOflecturers;
+            int remainder = numberOfScripts % numberOflecturers;
+            if (remainder > 0) { return "Each lecturer has: " + lecturerScript + " Scripts." + "The last lecture has " + remainder + " extra scripts."; }
+            else { return "Each lecturer has: " + lecturerScript + " Scripts."; }
+
+        }
+
+        public static String estimatedTime(int subtotalOfquestion, int numberOfquestions)
+        {
+            int secsPerQs = subtotalOfquestion * 2;
+            int totalSecs = secsPerQs * numberOfquestions;
+
+            int inMins = totalSecs / 60;
+            int remainder = totalSecs % 60;
+
+            if (remainder > 0) { if (remainder > 30 & remainder < 60) { inMins++; } }
+
+            if (inMins > 60)
+            {
+                int inHours = inMins / 60;
+                return "The estimated time: " + inHours + " Hours";
+
+            }
+            else
+            {
+                return "The estimated time: " + inMins + " Minutes";
+            }
+
+        }
+
+        static public void Main(String[] args)
+        {
+
+            Console.WriteLine("********** first-year programming Application **********");
+            Console.WriteLine("Enter the number of scripts: ");
+            int numberOfScripts = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter the number of questions: ");
+            int numberOfquestions = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter the subtotal of each question: ");
+            int subtotalOfquestion = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter the number of Lectures: ");
+            int numberOflecturers = Convert.ToInt32(Console.ReadLine());
+
+
+            String forEach = scriptsToMark(numberOfScripts, numberOflecturers);
+            Console.WriteLine(forEach);
+            string output = estimatedTime(subtotalOfquestion, numberOfquestions);
+            Console.WriteLine(output);
+
+
+
+        }
+
+    }
+}
